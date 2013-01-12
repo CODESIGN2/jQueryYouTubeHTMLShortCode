@@ -5,6 +5,9 @@ This is a tiny HTML, JS and CSS(optional) youtube video inclusion plugin.
 
 to see a live demo visit http://codepen.io/Lewiscowles1986/pen/JwijD
 
+REQUIREMENTS
+-HTML, JavaScript, IFrame Support, jQuery (Hopefully these are not too much to ask)
+
 Usage
 
 1) Firstly include the CD2-yt-vidplugin.js file anywhere in your DOM
@@ -34,3 +37,12 @@ oh and if you wish include a comment or link to my blog using any of the followi
 &lt;!-- CODESIGN2 YouTube HTML SHORT-CODE PLUGIN --&gt;
 
 LICENSE IS GPL
+
+
+FUTURE:
+I Do plan on moving away from jQuery as the code is trivial and should not have such 
+overhead, but I like to think jQuery makes the code more easily readable and transparent 
+to comply with the GPL and my own feelings on writing well-formatted code.
+
+THANKS:
+YouTube
