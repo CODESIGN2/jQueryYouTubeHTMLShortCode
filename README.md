@@ -16,20 +16,20 @@ users can edit, update and modify the plugin to their own needs and purposes.
 3) Enjoy adding youtube video's to your web-page/site/service using 
 the below
 
-<div id="lyViVmaBQDg" class="youtubevid" width="100%" height="330">
-  <i>Video Content Requires JavaScript enabled!</i>
-</div>
+&lt;div id="lyViVmaBQDg" class="youtubevid" width="100%" height="330"&gt;
+  &lt;i&gt;Video Content Requires JavaScript enabled!&lt;/i&gt;
+&lt;/div&gt;
 
 4) replace lyViVmaBQDg with the code for your youtube video 
 (remove everything before the ?v= from the url and everything after the #)
 so http://www.youtube.com/watch?v=lyViVmaBQDg = lyViVmaBQDg 
 (this is the rick astley rick-roll video, everyone should have as their 404 page)
 
-5) last of all (optional) customize the message inbetween the <i> & </i> tags
+5) last of all (optional) customize the message inbetween the &lt;i&gt; & &lt;/i&gt; tags
 
 oh and if you wish include a comment or link to my blog using any of the following
 
-<a href="http://www.codesign2.co.uk/blog">CD2</a>
-<!-- CODESIGN2 YouTube HTML SHORT-CODE PLUGIN -->
+&lt;a href="http://www.codesign2.co.uk/blog"&gt;CD2&lt;/a&gt;
+&lt;!-- CODESIGN2 YouTube HTML SHORT-CODE PLUGIN --&gt;
 
 LICENSE IS GPL
