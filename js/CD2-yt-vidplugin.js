@@ -5,6 +5,14 @@ jQuery(document).ready(function(){
 		var vid = jQuery(elem).attr('id');
 		jQuery(elem).html( '<iframe width="'+dimensions.width+'" height="'+dimensions.height+'" src="http://www.youtube-nocookie.com/embed/'+vid+'" frameborder="0" allowfullscreen></iframe>' );
 	};
+	window.resizeYTVid = function(elem) {
+		var aspect = extractAspectRatio( elem, jQuery(elem).data('aspectratio') );
+		jQuery(elem).find('iframe').width(0); jQuery(elem).find('iframe').height(0);
+		var dimensions = arToWH(elem,aspect)
+		var vid = jQuery(elem).attr('id');
+		jQuery(elem).find('iframe').width(dimensions.width);
+		jQuery(elem).find('iframe').height(dimensions.height);
+	};
 	window.extractAspectRatio = function( elem , arRaw ) { // returns the aspect ratio
 		var arData = [16,9]; // default to a 16:9 ratio
 		if( typeof(arRaw) != 'undefined' ) {
@@ -31,7 +39,17 @@ jQuery(document).ready(function(){
 		obj.width = eWidth; obj.height = eHeight;
 		return obj;
 	}
-	jQuery('.youtubevid').each(function(){
-		extractYTVid(this);
+	jQuery(window).resize(function(){
+		initAllYTVids();
 	});
+	window.initAllYTVids = function() {
+		jQuery('.youtubevid').each(function(){
+			if( jQuery(this).html().indexOf('<iframe') < 0 ) {
+				extractYTVid(this);
+			} else {
+				resizeYTVid(this);
+			}
+		});
+	}
+	initAllYTVids();
 });
