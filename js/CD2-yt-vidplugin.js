@@ -6,7 +6,6 @@ jQuery(document).ready(function(){
 		jQuery(elem).html( '<iframe width="'+dimensions.width+'" height="'+dimensions.height+'" src="http://www.youtube-nocookie.com/embed/'+vid+'" frameborder="0" allowfullscreen></iframe>' );
 	};
 	window.extractAspectRatio = function( elem , arRaw ) { // returns the aspect ratio
-		var defWidth = 100; // Default width percentage
 		var arData = [16,9]; // default to a 16:9 ratio
 		if( typeof(arRaw) != 'undefined' ) {
 			if ( arRaw.indexOf(':') >= 0 ) {
@@ -18,6 +17,7 @@ jQuery(document).ready(function(){
 		return arObj;
 	};
 	window.arToWH = function( elem , ar ) { // returns the width & height based on aspect ratio
+		var defWidth = 100.0; // Default width percentage
 		var eWidth = parseFloat(jQuery(elem).width() );
 		var eHeight = parseFloat( jQuery(elem).height() );
 		if(eHeight > 1 && eWidth < 1){ // height set, width not set (generally overwrite with explicit css width:0px;)
