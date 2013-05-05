@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+  <title>YouTube HTML ShortCode</title>
+  <style type="text/css">
+  body {
+    font-family: arial, helvetica, sans-serif; 
+    background: #545454;
+  }
+  .youtubevid i{
+    display: block;
+    background: darkred;
+    color: white;
+    text-align: center;
+  }
+  #codesign2 {
+    position: absolute;
+    top: 12.5px;
+    right: 25px;
+    width: 40px;
+    padding: 15px 7.5px;
+    font-family: arial, helvetica, sans-serif;
+    font-weight: bold;
+    background: #999;
+    border-bottom: 3px solid #666666;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 1.5px 1.5px #666;
+    color: black;
+  }
+  #codesign2:hover {
+    margin-top: 3px;
+    background: #dedede;
+    text-shadow: none;
+    border: none;
+  }
+  .twoColGrid > div{
+    float: left;
+    width: 49.5%;
+    margin-left: 1%;
+  } .twoColGrid > div:first-child {
+    margin-left: 0;
+  }
+  
+  .threeColGrid > div{
+    float: left;
+    width: 32.66%;
+    margin-left: 1%;
+  } .threeColGrid > div:first-child {
+    margin-left: 0;
+  }
+  
+  .fourColGrid > div{
+    float: left;
+    width: 24.25%;
+    margin-left: 1%;
+  } .fourColGrid > div:first-child {
+    margin-left: 0;
+  }
+  </style>
+</head>
+<body>
+
+<!-- JQuery Required-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- warning Rick-Rolling is Seriously Dangerous -->
+<br/><h3 style="color:#992222;">Please do not click play!!!</h3>
+<div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+<a id="codesign2" href="http://bit.ly/11qk1lA">CD2</a>
+<div class="twoColGrid">
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+</div>
+<div class="threeColGrid">
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+</div>
+<div class="fourColGrid">
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+  <div class="youtubevid" id="qyRcN5mL7Mk"><i>Video Content Requires JavaScript enabled!</i></div>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+  window.extractYTVid = function(elem) {
+		var aspect = extractAspectRatio( elem, jQuery(elem).data('aspectratio') );
+		var dimensions = arToWH(elem,aspect)
+		var vid = jQuery(elem).attr('id');
+		jQuery(elem).html( '<iframe width="'+dimensions.width+'" height="'+dimensions.height+'" src="http://www.youtube-nocookie.com/embed/'+vid+'" frameborder="0" allowfullscreen></iframe>' );
+	};
+	window.resizeYTVid = function(elem) {
+		var aspect = extractAspectRatio( elem, jQuery(elem).data('aspectratio') );
+		jQuery(elem).find('iframe').width(0); jQuery(elem).find('iframe').height(0);
+		var dimensions = arToWH(elem,aspect)
+		var vid = jQuery(elem).attr('id');
+		jQuery(elem).find('iframe').width(dimensions.width);
+		jQuery(elem).find('iframe').height(dimensions.height);
+	};
+	window.extractAspectRatio = function( elem , arRaw ) { // returns the aspect ratio
+		var arData = [16,9]; // default to a 16:9 ratio
+		if( typeof(arRaw) != 'undefined' ) {
+			if ( arRaw.indexOf(':') >= 0 ) {
+				arData = arRaw.split(':');
+			}
+		}
+		var arObj = new Object();
+		arObj.x = arData[0]; arObj.y = arData[1];
+		return arObj;
+	};
+	window.arToWH = function( elem , ar ) { // returns the width & height based on aspect ratio
+		var defWidth = 100.0; // Default width percentage
+		var eWidth = parseFloat(jQuery(elem).width() );
+		var eHeight = parseFloat( jQuery(elem).height() );
+		if(eHeight > 1 && eWidth < 1){ // height set, width not set (generally overwrite with explicit css width:0px;)
+			eWidth = eHeight / ar.y * ar.x;
+		} else if(eHeight < 1 && eWidth < 1) { // if width & height set
+			eWidth = defWidth+'%'; eHeight = ( ( defWidth/ar.x )*ar.y )+'%';
+		} else { // if width set and not height
+			eHeight = eWidth / ar.x * ar.y;
+		}
+		var obj = {};
+		obj.width = eWidth; obj.height = eHeight;
+		return obj;
+	}
+	jQuery(window).resize(function(){
+		initAllYTVids();
+	});
+	window.initAllYTVids = function() {
+		jQuery('.youtubevid').each(function(){
+			if( jQuery(this).html().indexOf('<iframe') < 0 ) {
+				extractYTVid(this);
+			} else {
+				resizeYTVid(this);
+			}
+		});
+	}
+	initAllYTVids();
+});
+</script>
+</body>
+</html>
