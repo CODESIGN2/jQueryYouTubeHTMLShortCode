@@ -3,7 +3,7 @@ jQuery(document).ready(function(){
 		var aspect = extractAspectRatio( elem, jQuery(elem).data('aspectratio') );
 		var dimensions = arToWH(elem,aspect)
 		var vid = jQuery(elem).attr('id');
-		jQuery(elem).html( '<iframe width="'+dimensions.width+'" height="'+dimensions.height+'" src="http://www.youtube-nocookie.com/embed/'+vid+'" frameborder="0" allowfullscreen></iframe>' );
+		jQuery(elem).html( '<iframe width="'+dimensions.width+'" height="'+dimensions.height+'" src="'+vid+'" frameborder="0" allowfullscreen></iframe>' );
 	};
 	window.resizeYTVid = function(elem) {
 		var aspect = extractAspectRatio( elem, jQuery(elem).data('aspectratio') );
